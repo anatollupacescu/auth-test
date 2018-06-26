@@ -4,8 +4,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/spf13/viper"
 	"github.com/anatollupacescu/auth-test/internal/app/tool"
+	"github.com/spf13/viper"
 )
 
 const Endpoints = "ENDPOINT_LIST"
@@ -34,7 +34,8 @@ func doTest(url string) {
 	}
 	responseCode, err := endpoint.ResponseCode()
 	if err != nil {
-		log.Printf("got error while sending a get request to %s: %s", url, err)
+		log.Print(err)
+	} else {
+		log.Printf("request to url '%s' returned code: %d", url, responseCode)
 	}
-	log.Printf("request to url '%s' returned: %d", url, responseCode)
 }
